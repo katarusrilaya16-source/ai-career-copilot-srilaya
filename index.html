@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeIQ - AI Resume Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h2>Resume<span>IQ</span></h2>
+    <p>AI Powered Resume Analyzer</p>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Build a Resume That Gets Noticed</h1>
+        <p>Analyze your resume against a job description using Gemini AI.</p>
+    </section>
+
+    <section class="container">
+        <div class="input-card">
+            <h2>Upload Your Resume</h2>
+
+            <input type="file" id="resumeFile" accept=".txt">
+
+            <textarea id="resumeText"
+                placeholder="Or paste your resume content here..."></textarea>
+
+            <h2>Job Description</h2>
+
+            <textarea id="jobText"
+                placeholder="Paste the job description here..."></textarea>
+
+            <button id="analyzeBtn" onclick="analyzeResume()">
+                Analyze My Resume
+            </button>
+
+            <p id="status"></p>
+        </div>
+
+        <div class="result-card">
+            <h2>AI Analysis Report</h2>
+
+            <div id="empty">
+                <p>Your resume analysis will appear here.</p>
+            </div>
+
+            <div id="results" class="hidden">
+                <h3>Match Score</h3>
+                <div class="score" id="score">0%</div>
+
+                <h3>AI Overview</h3>
+                <p id="overview"></p>
+
+                <h3>Strengths</h3>
+                <ul id="strengths"></ul>
+
+                <h3>Areas to Improve</h3>
+                <ul id="weaknesses"></ul>
+
+                <h3>Recommended Skills</h3>
+                <div id="skills"></div>
+
+                <h3>Suggestions</h3>
+                <ul id="suggestions"></ul>
+
+                <h3>Suggested Resume Summary</h3>
+                <p id="summary"></p>
+
+                <button onclick="window.print()" class="print-btn">
+                    Print Report
+                </button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
