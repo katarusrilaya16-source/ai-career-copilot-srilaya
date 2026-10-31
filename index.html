@@ -1,82 +1,184 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>ResumeIQ - AI Resume Analyzer</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
-    <h2>Resume<span>IQ</span></h2>
-    <p>AI Powered Resume Analyzer</p>
+    <div class="brand">
+        <h2>Resume<span>IQ</span></h2>
+        <p>AI Powered Career Assistant</p>
+    </div>
+    <div class="header-tag">✦ Powered by Gemini AI</div>
 </header>
 
 <main>
+
     <section class="hero">
-        <h1>Build a Resume That Gets Noticed</h1>
-        <p>Analyze your resume against a job description using Gemini AI.</p>
+        <span class="tagline">SMARTER CAREER DECISIONS</span>
+
+        <h1>Make Your Resume <span>Stand Out.</span></h1>
+
+        <p>
+            Upload your resume and compare it with a job description.
+            Get intelligent feedback and improve your career opportunities.
+        </p>
     </section>
 
     <section class="container">
+
+        <!-- INPUT SECTION -->
+
         <div class="input-card">
-            <h2>Upload Your Resume</h2>
 
-            <input type="file" id="resumeFile" accept=".txt">
+            <h2>📄 Upload Your Resume</h2>
 
-            <textarea id="resumeText"
-                placeholder="Or paste your resume content here..."></textarea>
+            <p class="description">
+                Upload PDF, DOCX or TXT files.
+            </p>
 
-            <h2>Job Description</h2>
+            <div class="upload-area">
+                <input
+                    type="file"
+                    id="resumeFile"
+                    accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"
+                >
 
-            <textarea id="jobText"
-                placeholder="Paste the job description here..."></textarea>
+                <p>Choose your resume file</p>
+                <small>PDF, DOCX or TXT · Maximum 5 MB</small>
+            </div>
+
+            <p id="fileName" class="file-name">
+                No file selected
+            </p>
+
+            <div class="or-divider">
+                <span>OR PASTE RESUME CONTENT</span>
+            </div>
+
+            <label for="resumeText">Resume Content</label>
+
+            <textarea
+                id="resumeText"
+                placeholder="Paste your resume content here..."
+            ></textarea>
+
+            <label for="jobText">Job Description</label>
+
+            <textarea
+                id="jobText"
+                placeholder="Paste the job description here..."
+            ></textarea>
 
             <button id="analyzeBtn" onclick="analyzeResume()">
-                Analyze My Resume
+                Analyze My Resume →
             </button>
 
-            <p id="status"></p>
+            <p id="status" role="status" aria-live="polite"></p>
+
+            <p class="privacy">
+                🔒 Resume text is processed for analysis and not stored by this demo.
+            </p>
+
         </div>
 
-        <div class="result-card">
-            <h2>AI Analysis Report</h2>
+        <!-- RESULT SECTION -->
 
-            <div id="empty">
-                <p>Your resume analysis will appear here.</p>
+        <div class="result-card">
+
+            <div class="result-heading">
+                <h2>✨ AI Analysis Report</h2>
+                <span class="ai-badge">GEMINI AI</span>
+            </div>
+
+            <div id="empty" class="empty-state">
+                <div class="empty-icon">📊</div>
+
+                <h3>Your Analysis Will Appear Here</h3>
+
+                <p>
+                    Upload your resume and enter a job description
+                    to receive your personalized AI report.
+                </p>
+            </div>
+
+            <div id="loading" class="hidden">
+                <div class="loader"></div>
+                <h3>Analyzing Your Resume...</h3>
+                <p>Gemini AI is reviewing your information.</p>
             </div>
 
             <div id="results" class="hidden">
-                <h3>Match Score</h3>
-                <div class="score" id="score">0%</div>
 
-                <h3>AI Overview</h3>
-                <p id="overview"></p>
+                <section class="score-section">
+                    <div>
+                        <h3>Resume Match Score</h3>
+                        <p>Estimated job compatibility</p>
+                    </div>
 
-                <h3>Strengths</h3>
-                <ul id="strengths"></ul>
+                    <div class="score" id="score">0%</div>
+                </section>
 
-                <h3>Areas to Improve</h3>
-                <ul id="weaknesses"></ul>
+                <section class="report-section">
+                    <h3>🤖 AI Overview</h3>
+                    <p id="overview"></p>
+                </section>
 
-                <h3>Recommended Skills</h3>
-                <div id="skills"></div>
+                <section class="report-section">
+                    <h3 class="green">✓ Strengths</h3>
+                    <ul id="strengths"></ul>
+                </section>
 
-                <h3>Suggestions</h3>
-                <ul id="suggestions"></ul>
+                <section class="report-section">
+                    <h3 class="orange">↗ Areas to Improve</h3>
+                    <ul id="weaknesses"></ul>
+                </section>
 
-                <h3>Suggested Resume Summary</h3>
-                <p id="summary"></p>
+                <section class="report-section">
+                    <h3>💡 Recommended Skills</h3>
+                    <div id="skills"></div>
+                </section>
 
-                <button onclick="window.print()" class="print-btn">
-                    Print Report
+                <section class="report-section">
+                    <h3>📌 Improvement Suggestions</h3>
+                    <ul id="suggestions"></ul>
+                </section>
+
+                <section class="summary-section">
+                    <h3>✍ Suggested Resume Summary</h3>
+                    <p id="summary"></p>
+                </section>
+
+                <button class="print-btn" onclick="window.print()">
+                    Print / Save Report
                 </button>
+
+                <p class="disclaimer">
+                    AI feedback is an estimate, not a hiring decision.
+                    Review suggestions before changing your resume.
+                </p>
+
             </div>
+
         </div>
+
     </section>
+
 </main>
 
+<footer>
+    <p>ResumeIQ © 2026 | AI Powered Resume Analyzer</p>
+</footer>
+
 <script src="script.js"></script>
+
 </body>
 </html>
